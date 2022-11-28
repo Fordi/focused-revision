@@ -1,0 +1,23 @@
+.App {
+  font-family: sans-serif;
+  text-align: center;
+}
+
+section {
+  text-align: left;
+  margin: 2rem 1rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid currentColor;
+}
+
+fieldset {
+  padding: 0.5rem;
+}
+
+fieldset button {
+  margin-left: 0.5rem;
+}
+
+label {
+  padding-right: 0.25rem;
+}
