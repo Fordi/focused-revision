@@ -9,15 +9,26 @@ Discussion: How would you update this to allow a user to select their favorite c
 Discussion: How would you detect and handle API request failures?
 */
 
+import { useState } from "react";
+
 // Replace (nameParamHere) with your country of choice.
-const restCountriesAPI = "https://restcountries.com/v2/name/(nameParamHere)";
+const restCountriesAPI = (q) => `https://restcountries.com/v2/name/${encodeURIComponent(q)}`;
+import useFetch from '../useFetch';
 
 const Part2 = () => {
+  const [clicked, setClicked] = useState(false);
+  const {data, loading, error} = useFetch(restCountriesAPI("Peru"), { enabled: clicked });
+  const onClick = () => {
+    setClicked(true);
+  }
   return (
     <section>
       <h2>Part Two</h2>
-      <p id="countryInfo">{/* Capital, Country */}</p>
-      <button id="showCountryInfo">Show country info</button>
+      {loading && "..."}
+      <p id="countryInfo">{data?.[0]?.capital}</p>
+      <button id="showCountryInfo" onClick={onClick}>
+        Show country info
+      </button>
     </section>
   );
 };
